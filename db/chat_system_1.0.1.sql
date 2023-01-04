@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Dec 07. 15:02
+-- Létrehozás ideje: 2023. Jan 04. 15:13
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.11
 
@@ -57,8 +57,9 @@ CREATE TABLE `user` (
   `Name` varchar(30) NOT NULL,
   `Email` varchar(320) NOT NULL,
   `Password` varchar(300) NOT NULL,
+  `code` varchar(36) NOT NULL,
   `Phone` varchar(11) NOT NULL,
-  `BirthDate` date NOT NULL
+  `BirthDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -73,6 +74,23 @@ CREATE TABLE `usersinconversation` (
   `ID_Conversation` int(11) NOT NULL,
   `ID_User` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `user_seq`
+--
+
+CREATE TABLE `user_seq` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `user_seq`
+--
+
+INSERT INTO `user_seq` (`next_val`) VALUES
+(1);
 
 --
 -- Indexek a kiírt táblákhoz

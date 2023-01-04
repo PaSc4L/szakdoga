@@ -20,6 +20,8 @@ public class UserEntity implements Serializable {
     private String email;
     @Column(nullable = false)
     private String password;
+    @Column(nullable = false, unique = true, updatable = false)
+    private String code;
     @Column(unique = true)
     private String phone;
     @Column
@@ -28,12 +30,13 @@ public class UserEntity implements Serializable {
     public UserEntity() {
     }
 
-    public UserEntity(Long id, String username, String name, String email, String password, String phone, Date birthdate) {
+    public UserEntity(Long id, String username, String name, String email, String password,String code, String phone, Date birthdate) {
         this.id = id;
         this.username = username;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.code = code;
         this.phone = phone;
         this.birthdate = birthdate;
     }
@@ -76,6 +79,13 @@ public class UserEntity implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getCode(){
+        return code;
+    }
+
+    public void setCode(String code){
+        this.code = code;
     }
 
     public String getPhone() {
