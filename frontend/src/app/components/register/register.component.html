@@ -34,36 +34,21 @@
 
                         <div class="input-field">
                             <i class="fa-solid fa-calendar"></i>
-                            <input type="datetime" placeholder="2023-01-01" max="2004-01-01" min="1921-01-09">
+                            <input type="datetime" placeholder="Date of birth" max="2004-01-01" min="1921-01-09">
+                        </div>
+
+                        <div class="input-field">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <input type="phone" placeholder="Phone number">
                         </div>
                         
                         <p>Already have an account? <a routerLink=""> Login </a></p> 
                     </div>
                     <div class="btn-field">
-                        <button type="button" id="signUpBtn">Register</button>
-                        <!--button type="button" id="signInBtn"class="disable">Login</button-->
+                        <button type="button">Register</button>
                     </div>
                 </form>
             </div>
         </div>
-        <!--script>
-            let signUpBtn = document.getElementById("signUpBtn");
-            let signInBtn = document.getElementById("signInBtn");
-            let nameField = document.getElementById("nameField");
-            let title = document.getElementById("title");
-
-            signInBtn.onclick = function(){
-                nameField.style.maxHeight = "0";
-                title.innerHTML = "Login";
-                signUpBtn.classList.add("disable");
-                signInBtn.classList.remove("disable");
-            }
-            signUpBtn.onclick = function(){
-                nameField.style.maxHeight = "65px";
-                title.innerHTML = "Register";
-                signUpBtn.classList.remove("disable");
-                signInBtn.classList.add("disable");
-            }
-        </script-->
     </body>
 </html>
