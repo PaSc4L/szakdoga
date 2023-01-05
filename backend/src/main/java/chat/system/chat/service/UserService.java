@@ -18,6 +18,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    //---functions---
     public UserEntity addUser(UserEntity user){
         user.setCode(UUID.randomUUID().toString());
         return userRepository.save(user);
