@@ -20,7 +20,7 @@ public class UserEntity implements Serializable {
     private String email;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false, unique = true, updatable = false)
+    @Column(unique = true, updatable = false)
     private String code;
     @Column(unique = true)
     private String phone;
