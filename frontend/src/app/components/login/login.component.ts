@@ -14,7 +14,11 @@ export class LoginComponent implements OnInit {
   }
 
   LoginClick(){
+    let email = (<HTMLInputElement>document.getElementById("email")).value;
+    let password = (<HTMLInputElement>document.getElementById("password")).value;
+
     
+    console.log(email, password);
   }
 
 }

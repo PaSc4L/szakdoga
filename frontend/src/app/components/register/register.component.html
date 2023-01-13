@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name ="viewport" content="width=device-width, initial-scale=1.0">
-        <title>login</title>
+        <title>register</title>
     </head>
     <body>
         <div class="container">
@@ -12,40 +12,40 @@
                 </h1>
                 <form>
                     <div class="input-group">
-                        <div class="input-field" id="nameField">
+                        <div class="input-field">
                             <i class="fa-solid fa-user"></i>
-                            <input type="text" placeholder="Name">
+                            <input type="text" placeholder="Name" id="name">
                         </div>
 
                         <div class="input-field">
                             <i class="fa-solid fa-envelope"></i>
-                            <input type="email" placeholder="Email">
+                            <input type="email" placeholder="Email" id="email">
                         </div>
 
                         <div class="input-field">
                             <i class="fa-solid fa-lock"></i>
-                            <input type="password" placeholder="Password">
+                            <input type="password" placeholder="Password" id="password">
                         </div>
 
                         <div class="input-field">
                             <i class="fa-solid fa-key"></i>
-                            <input type="password" placeholder="Password again">
+                            <input type="password" placeholder="Password again" id="passwordAgain">
                         </div>
 
                         <div class="input-field">
                             <i class="fa-solid fa-calendar"></i>
-                            <input type="datetime" placeholder="Date of birth" max="2004-01-01" min="1921-01-09">
+                            <input type="date" placeholder="Date of birth" min="1921-01-09" max="2009-01-01" id="dateOfBirth">
                         </div>
 
                         <div class="input-field">
                             <i class="fa-solid fa-mobile-screen-button"></i>
-                            <input type="phone" placeholder="Phone number">
+                            <input type="phone" placeholder="Phone number" id="phone">
                         </div>
                         
                         <p>Already have an account? <a routerLink=""> Login </a></p> 
                     </div>
                     <div class="btn-field">
-                        <button type="button">Register</button>
+                        <button type="button" (click)="RegisterClick()">Register</button>
                     </div>
                 </form>
             </div>
