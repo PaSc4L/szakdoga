@@ -22,8 +22,6 @@ export class RegisterComponent implements OnInit {
     let passwordAgain = (<HTMLInputElement>document.getElementById("passwordAgain")).value;;
     let dateOfBirth = (<HTMLInputElement>document.getElementById("dateOfBirth")).value;;
     let phone = (<HTMLInputElement>document.getElementById("phone")).value;;
-
-    console.log(name,email,password,passwordAgain,dateOfBirth,phone)
   }
 
 }

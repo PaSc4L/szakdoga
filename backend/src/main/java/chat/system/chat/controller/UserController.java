@@ -1,5 +1,6 @@
 package chat.system.chat.controller;
 
+import chat.system.chat.Dto.RegisterDTO;
 import chat.system.chat.model.UserEntity;
 import chat.system.chat.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -45,5 +46,13 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegisterDTO dto){
+        try{
+            return ResponseEntity.ok(userService.register(dto));
+        }catch (Exception ex){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
+        }
     }
 }

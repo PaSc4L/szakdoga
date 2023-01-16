@@ -1,7 +1,6 @@
 package chat.system.chat.model;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,21 +9,20 @@ import java.util.Date;
 public class UserEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
-    @Column(nullable = false,updatable = false)
     private Long id;
-    @Column(nullable = false)
+    @Column()
     private String username;
-    @Column(nullable = false)
+    @Column()
     private String name;
-    @Column(nullable = false, unique = true)
+    @Column( unique= true )
     private String email;
-    @Column(nullable = false)
+    @Column()
     private String password;
-    @Column(unique = true, updatable = false)
+    @Column()
     private String code;
-    @Column(unique = true)
+    @Column()
     private String phone;
-    @Column
+    @Column()
     private Date birthdate;
 
     public UserEntity() {
