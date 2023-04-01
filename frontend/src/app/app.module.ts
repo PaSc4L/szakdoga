@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule, routingRoutes } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthenticationInterceptorProvider } from './interceptors/authentication-interceptor';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthenticationInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
