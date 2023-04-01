@@ -3,7 +3,8 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -15,6 +16,18 @@ export class AuthenticationInterceptorInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    
+    let token = sessionStorage.getItem("token") || '{}';
+    request = request.clone({
+      headers: request.headers.set('authorization', token),
+    });
+    
     return next.handle(request);
   }
 }
+
+export const AuthenticationInterceptorProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthenticationInterceptorInterceptor,
+  multi: true,
+};
