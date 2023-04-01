@@ -67,12 +67,10 @@ public class UserService implements UserDetailsService {
         userEntity.setEmail(dto.getEmail());
         userEntity.setPassword(passwordEncoder.encode(dto.getPassword()));
         userEntity.setUsername(dto.getUsername());
-        userEntity.setCode(UUID.randomUUID().toString());
         userEntity.setBirthDate(dto.getBirthdate());
         userEntity.setName(dto.getName());
         userEntity.setPhone(dto.getPhone());
         userEntity = userRepository.save(userEntity);
-        dto.setCode(userEntity.getCode());
         return dto;
     }
     

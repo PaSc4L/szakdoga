@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { JWTServiceService } from 'src/app/services/JWTservice/jwtservice.service';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 
 @Component({
@@ -7,8 +9,9 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  
 
-  constructor(private service: UserServiceService) { }
+  constructor(private service: UserServiceService, private jwt: JWTServiceService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -17,8 +20,13 @@ export class LoginComponent implements OnInit {
     let email = (<HTMLInputElement>document.getElementById("email")).value;
     let password = (<HTMLInputElement>document.getElementById("password")).value;
 
-    
-    console.log(email, password);
+    this.service.login(email,password).subscribe(
+      (next) =>{
+        let token = JSON.stringify(next.body).substring(10, JSON.stringify(next.body).length-2);
+        this.jwt.addToken(token);
+        this.router.navigate(['/chat']);
+      }
+    );
   }
 
 }

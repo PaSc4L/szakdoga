@@ -6,7 +6,6 @@ public class RegisterDTO {
     private String password;
     private String username;
     private String name;
-    private String code;
     private String phone;
     private Date birthdate;
 
@@ -24,14 +23,6 @@ public class RegisterDTO {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getPhone() {
