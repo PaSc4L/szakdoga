@@ -1,4 +1,4 @@
-package chat.system.chat.security;
+package chat.system.chat.config;
 
 import chat.system.chat.filter.CustomAuthenticationFilter;
 import chat.system.chat.filter.CustomAuthorizationFilter;
