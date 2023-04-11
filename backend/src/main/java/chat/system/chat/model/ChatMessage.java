@@ -1,38 +1,17 @@
 package chat.system.chat.model;
 
+import lombok.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class ChatMessage {
-    private MessageType type;
-    private String content;
-    private String sender;
+    private String senderName;
+    private String recieverName;
+    private String message;
+    private String date;
+    private Status status;
 
-    public enum MessageType{
-        CHAT,
-        JOIN,
-        LEAVE
-    }
-
-    public MessageType getType() {
-        return type;
-    }
-
-    public void setType(MessageType type) {
-        this.type = type;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getSender() {
-        return sender;
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
 }
