@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserServiceService } from 'src/app/services/userService/user-service.service';
 
 @Component({
   selector: 'app-chat',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
 
-  constructor() { }
+  /*title = 'WebSocketChatRoom';
+  greetings: string[] = [];
+  disabled = true;
+  //newmessage: string;
+  private stompClient = null;
+*/
+  constructor(private service:UserServiceService) { }
+
 
   ngOnInit(): void {
   }
 
+  gomb(){
+    this.service.getUsers().subscribe();
+  }
+
+  sendMessage(){
+    console.log("Működik a gomb :3");
+  }
 }
