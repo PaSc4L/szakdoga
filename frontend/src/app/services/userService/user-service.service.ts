@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { User } from '../user';
+//import { User } from '../../dtos/user';
 import { environment } from 'src/environments/environment';
 
 
@@ -38,7 +38,7 @@ export class UserServiceService {
     return this.http.post(`${environment.url}/user/register`, params);
   }
 
-  //getAllusers
+  /*getAllusers
   public getUsers(): Observable<User[]>{
     return this.http.get<User[]>(`${environment.url}/user/all`);
   }
@@ -54,5 +54,5 @@ export class UserServiceService {
   public deleteUser(userId: number): Observable<void>{
     return this.http.delete<void>(`${environment.url}/user/delete/${userId}`);
   }
-
+*/
 }
