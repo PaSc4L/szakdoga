@@ -1,7 +1,7 @@
 package com.example.ws.configurations;
 
-public enum MessageType {
-    CHAT,
+public enum MessageStatus {
     JOIN,
+    MESSAGE,
     LEAVE
 }

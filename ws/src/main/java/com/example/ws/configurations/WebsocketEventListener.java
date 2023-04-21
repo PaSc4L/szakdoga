@@ -10,7 +10,7 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
 @Component
 public class WebsocketEventListener {
-    @Autowired
+    /*@Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
     @EventListener
@@ -21,10 +21,10 @@ public class WebsocketEventListener {
         if (username != null) {
 
             ChatMessage chatMessage = new ChatMessage();
-            chatMessage.setMessageType(MessageType.LEAVE);
-            chatMessage.setSender(username);
+            //chatMessage.setMessageType(MessageType.LEAVE);
+            //chatMessage.setSender(username);
 
             messagingTemplate.convertAndSend("/chatroom/public", chatMessage);
         }
-    }
+    }*/
 }

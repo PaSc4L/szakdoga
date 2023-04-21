@@ -3,15 +3,42 @@ package com.example.ws.configurations;
 import java.awt.*;
 
 public class ChatMessage {
-    private MessageType messageType;
+    private MessageStatus messageType;
+    private String senderId;
+    private String recieverId;
     private String sender;
+    private String reciver;
     private String content;
 
-    public MessageType getMessageType() {
+    public String getRecieverId() {
+        return recieverId;
+    }
+
+    public void setRecieverId(String recieverId) {
+        this.recieverId = recieverId;
+    }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String id) {
+        this.senderId = id;
+    }
+
+    public String getReciver() {
+        return reciver;
+    }
+
+    public void setReciver(String reciver) {
+        this.reciver = reciver;
+    }
+
+    public MessageStatus getMessageType() {
         return messageType;
     }
 
-    public void setMessageType(MessageType messageType) {
+    public void setMessageType(MessageStatus messageType) {
         this.messageType = messageType;
     }
 
