@@ -12,7 +12,7 @@ export class ChatComponent implements OnInit {
 
   sendMessage() {
     let message = (<HTMLInputElement>document.getElementById("message")).value;
-    console.log(message);
+    this.websocketService.sendMessage(message);
   }
   ngOnInit(): void {
   }

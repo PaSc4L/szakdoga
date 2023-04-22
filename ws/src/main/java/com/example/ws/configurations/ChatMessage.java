@@ -3,7 +3,7 @@ package com.example.ws.configurations;
 import java.awt.*;
 
 public class ChatMessage {
-    private MessageStatus messageType;
+    //private MessageStatus messageType;
     private String senderId;
     private String recieverId;
     private String sender;
@@ -34,13 +34,13 @@ public class ChatMessage {
         this.reciver = reciver;
     }
 
-    public MessageStatus getMessageType() {
+    /*public MessageStatus getMessageType() {
         return messageType;
     }
 
     public void setMessageType(MessageStatus messageType) {
         this.messageType = messageType;
-    }
+    }*/
 
     public String getSender() {
         return sender;

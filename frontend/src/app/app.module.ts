@@ -16,7 +16,7 @@ import { AuthenticationInterceptorProvider } from './interceptors/authentication
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [AuthenticationInterceptorProvider],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
