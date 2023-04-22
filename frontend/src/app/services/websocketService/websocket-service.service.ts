@@ -27,7 +27,7 @@ export class WebsocketServiceService {
         console.log(publicShow);
       })
       console.log('Connected: '+ frame);
-      that.stompClient.subscribe('/user/1/private',function (showPrivate:any){
+      that.stompClient.subscribe('/user/0/private',function (showPrivate:any){
           console.log(showPrivate);
           
       })
@@ -45,8 +45,8 @@ export class WebsocketServiceService {
       phone: "",
       birthDate: new Date()
     }
-    let receiver:User ={
-      id: 1,
+    let reciever:User ={
+      id: 0,
       username: "",
       name: "Józsi",
       email: "",
@@ -55,10 +55,10 @@ export class WebsocketServiceService {
       phone: "",
       birthDate: new Date()
     }
-    this.stompClient.send('/app/private-message' , {}, JSON.stringify(this.createMessageEntry(sender,receiver,message)));
+    this.stompClient.send('/app/private-message' , {}, JSON.stringify(this.createMessageEntry(sender,reciever,message)));
   }
 
-  createMessageEntry(sender:User, receiver: User, message:string){
+  createMessageEntry(sender:User, reciever: User, message:string){
     return{
       senderId: sender?.id,
       recieverId: sender?.id,
