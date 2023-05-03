@@ -33,9 +33,7 @@ export class RegisterComponent implements OnInit {
 
   if(name != "" && email != "" && password != "" && passwordAgain != "" && dateOfBirth != "" && phone != ""){
     if(password == passwordAgain){
-      //console.log(email, name, password, passwordAgain, dateOfBirth, phone);
-
-      
+      //this.service.register(name, email, password, dateOfBirth, phone);
     }else{
       alert("A jelszót hibásan adta meg!");
     }

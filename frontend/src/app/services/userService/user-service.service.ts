@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 //import { User } from '../../dtos/user';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/dtos/user';
 
 
 
@@ -29,16 +30,16 @@ export class UserServiceService {
   public register(name:string, email:string, password:string, date:Date, phone:string){
     let params =  new URLSearchParams();
     params.set("name", name);
-    params.set("name", name);
-    params.set("name", name);
-    params.set("name", name);
-    params.set("name", name);
+    params.set("email", name);
+    params.set("password", name);
+    params.set("date", name);
+    params.set("phone", name);
     params.set("name", name);
 
     return this.http.post(`${environment.url}/user/register`, params);
   }
 
-  /*getAllusers
+  //getAllusers
   public getUsers(): Observable<User[]>{
     return this.http.get<User[]>(`${environment.url}/user/all`);
   }
@@ -54,5 +55,5 @@ export class UserServiceService {
   public deleteUser(userId: number): Observable<void>{
     return this.http.delete<void>(`${environment.url}/user/delete/${userId}`);
   }
-*/
+
 }

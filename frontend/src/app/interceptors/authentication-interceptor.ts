@@ -15,11 +15,12 @@ export class AuthenticationInterceptorInterceptor implements HttpInterceptor {
     
   }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
     const token = sessionStorage.getItem("token") || '{}';
+    console.log("hallo?");
     request = request.clone({
-      headers: request.headers.set('Autorization', `Bearer ${token}`),
+      headers: request.headers.set('Authorization', `Bearer ${token}`), 
     });
     
     return next.handle(request);
