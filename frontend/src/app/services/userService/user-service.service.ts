@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { User } from '../user';
+//import { User } from '../../dtos/user';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/dtos/user';
 
 
 
@@ -26,16 +27,9 @@ export class UserServiceService {
     params, options)
   }
 
-  public register(name:string, email:string, password:string, date:Date, phone:string){
-    let params =  new URLSearchParams();
-    params.set("name", name);
-    params.set("name", name);
-    params.set("name", name);
-    params.set("name", name);
-    params.set("name", name);
-    params.set("name", name);
-
-    return this.http.post(`${environment.url}/user/register`, params);
+  public async register(register:User){
+    console.log(register);
+    return this.http.post<User>(`${environment.url}/user/register`, register).subscribe();
   }
 
   //getAllusers

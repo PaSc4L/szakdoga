@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from 'src/app/dtos/user';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private service: UserServiceService) { }
+  constructor(private service: UserServiceService, private router: Router) { }
 
   ngOnInit(): void {
     //let currentTime = new Date();
@@ -18,11 +20,6 @@ export class RegisterComponent implements OnInit {
   }
 
   RegisterClick(){
-  /*nevFormControl = new FormControl('', [Validators.required, Validators.pattern('[A-Za-zÁáÉéÚúŰűŐőÓóÜüÖö ]*')]);
-  jelszoFormControl = new FormControl('', [Validators.required]);
-  szuletesiidoFormControl = new FormControl('', [Validators.required]);
-*/
-  //if(this.nevFormControl.hasError('required')==true
   
   let name = (<HTMLInputElement>document.getElementById("name")).value;;
   let email = (<HTMLInputElement>document.getElementById("email")).value;;
@@ -33,9 +30,15 @@ export class RegisterComponent implements OnInit {
 
   if(name != "" && email != "" && password != "" && passwordAgain != "" && dateOfBirth != "" && phone != ""){
     if(password == passwordAgain){
-      //console.log(email, name, password, passwordAgain, dateOfBirth, phone);
-
-      
+      let register:User ={
+        name: name,
+        email: email,
+        password: password,
+        phone: phone,
+        birthdate: dateOfBirth
+      }
+      this.service.register(register);
+      this.router.navigate(['/']);
     }else{
       alert("A jelszót hibásan adta meg!");
     }

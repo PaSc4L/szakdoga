@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebsocketServiceService } from 'src/app/services/websocketService/websocket-service.service';
 
 @Component({
   selector: 'app-chat',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+  
+  friends: number[] = [];
 
-  constructor() { }
+  constructor(private websocketService: WebsocketServiceService) {}
 
+  sendMessage() {
+    let message = (<HTMLInputElement>document.getElementById("message")).value;
+    this.websocketService.getRooms(17);
+  }
   ngOnInit(): void {
   }
-
 }

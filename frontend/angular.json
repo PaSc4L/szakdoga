@@ -20,6 +20,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "socket.io-client",
+              "socket.io-parser",
+              "debug",
+              "core-js"
+            ],
             "outputPath": "dist/frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -106,6 +112,5 @@
         }
       }
     }
-  },
-  "defaultProject": "frontend"
+  }
 }

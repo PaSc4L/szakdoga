@@ -7,6 +7,7 @@ import {
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthenticationInterceptorInterceptor implements HttpInterceptor {
@@ -15,14 +16,20 @@ export class AuthenticationInterceptorInterceptor implements HttpInterceptor {
     
   }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
-    let token = sessionStorage.getItem("token") || '{}';
+    const token = sessionStorage.getItem("token") || '{}';
+    console.log("Csak most legyél itt!");
+    const isLoginUrl = request.url.endsWith(environment.url + "/user/login");
+    const isRegisterUrl = request.url.endsWith(environment.url + "/user/register");
+    if (!isLoginUrl && !isRegisterUrl){
     request = request.clone({
-      headers: request.headers.set('authorization', token),
+      headers: request.headers.set('Authorization', `Bearer ${token}`), 
     });
     
-    return next.handle(request);
+  }
+  
+  return next.handle(request);
   }
 }
 

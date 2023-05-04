@@ -1,5 +1,6 @@
 package chat.system.chat.config;
 
+
 import chat.system.chat.filter.CustomAuthenticationFilter;
 import chat.system.chat.filter.CustomAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/user/login").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/user/register").permitAll();
+        http.authorizeRequests().antMatchers("/ws/**").permitAll();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);

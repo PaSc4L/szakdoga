@@ -1,8 +1,9 @@
 package chat.system.chat.controller;
 
-import chat.system.chat.Dto.RegisterDTO;
+import chat.system.chat.Dto.UserDTO;
 import chat.system.chat.model.UserEntity;
 import chat.system.chat.service.UserService;
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,10 +25,10 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{code}")
-    public ResponseEntity<UserEntity> getUserByCode (@PathVariable("code") String code) {
-        UserEntity user = userService.findUserByCode(code);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    @GetMapping("/find")
+    public ResponseEntity<Integer> findUser(@RequestParam String email){
+        UserEntity userEntity = userService.findUserByEmail(email);
+        return new ResponseEntity<>(userEntity.getId(), HttpStatus.OK);
     }
 
     @PostMapping("/add")
@@ -43,13 +44,15 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
+    public ResponseEntity<Long> deleteUser(@PathVariable("id") Integer id){
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterDTO dto){
+    public ResponseEntity<?> register(@RequestBody UserDTO dto){
         try{
+            System.out.println("Ide eljött");
             return ResponseEntity.ok(userService.register(dto));
         }catch (Exception ex){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());

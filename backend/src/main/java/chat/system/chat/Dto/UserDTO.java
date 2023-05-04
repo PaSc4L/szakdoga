@@ -1,21 +1,12 @@
 package chat.system.chat.Dto;
 import java.util.Date;
 
-public class RegisterDTO {
+public class UserDTO {
     private String email;
     private String password;
-    private String username;
     private String name;
     private String phone;
-    private Date birthdate;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    private String birthdate;
 
     public String getName() {
         return name;
@@ -33,11 +24,11 @@ public class RegisterDTO {
         this.phone = phone;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 
