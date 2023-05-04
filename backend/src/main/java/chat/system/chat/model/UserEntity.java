@@ -10,8 +10,6 @@ public class UserEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
     private Integer id;
-    @Column()
-    private String username;
     @Column(name = "name")
     private String name;
     @Column( unique= true, name="email" )
@@ -19,22 +17,18 @@ public class UserEntity implements Serializable {
     @Column()
     private String password;
     @Column()
-    private String code;
-    @Column()
     private String phone;
     @Column()
-    private Date birthdate;
+    private String birthdate;
 
     public UserEntity() {
     }
 
-    public UserEntity(Integer id, String username, String name, String email, String password,String code, String phone, Date birthdate) {
+    public UserEntity(Integer id, String name, String email, String password, String phone, String birthdate) {
         this.id = id;
-        this.username = username;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.code = code;
         this.phone = phone;
         this.birthdate = birthdate;
     }
@@ -45,14 +39,6 @@ public class UserEntity implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getName() {
@@ -78,13 +64,6 @@ public class UserEntity implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getCode(){
-        return code;
-    }
-
-    public void setCode(String code){
-        this.code = code;
-    }
 
     public String getPhone() {
         return phone;
@@ -94,11 +73,11 @@ public class UserEntity implements Serializable {
         this.phone = phone;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthdate;
     }
 
-    public void setBirthDate(Date birthdate) {
+    public void setBirthDate(String birthdate) {
         this.birthdate = birthdate;
     }
 }

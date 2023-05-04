@@ -27,16 +27,9 @@ export class UserServiceService {
     params, options)
   }
 
-  public register(name:string, email:string, password:string, date:Date, phone:string){
-    let params =  new URLSearchParams();
-    params.set("name", name);
-    params.set("email", name);
-    params.set("password", name);
-    params.set("date", name);
-    params.set("phone", name);
-    params.set("name", name);
-
-    return this.http.post(`${environment.url}/user/register`, params);
+  public async register(register:User){
+    console.log(register);
+    return this.http.post<User>(`${environment.url}/user/register`, register).subscribe();
   }
 
   //getAllusers

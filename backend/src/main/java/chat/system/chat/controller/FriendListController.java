@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,10 +28,10 @@ public class FriendListController {
         return new ResponseEntity<>(newFriend, HttpStatus.CREATED);
     }
 
-    @GetMapping("/getFriendList")
-    public ResponseEntity<List<FriendListEntity>> getAllFriends(@RequestParam Integer id){
-        List<FriendListEntity> friendListEntities = friendListService.getFriends(id);
-        return new ResponseEntity<>(friendListEntities, HttpStatus.OK);
+    @GetMapping("/getFriendList/{id}")
+    public ResponseEntity<List<Integer>> getAllFriends(@PathVariable Integer id){
+        List<Integer> friendIds = new ArrayList<Integer>();
+        return new ResponseEntity<>(friendIds, HttpStatus.OK);
     }
 
     @GetMapping("/getAllRoomId/{id}")

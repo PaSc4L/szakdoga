@@ -1,6 +1,6 @@
 package chat.system.chat.service;
 
-import chat.system.chat.Dto.RegisterDTO;
+import chat.system.chat.Dto.UserDTO;
 import chat.system.chat.model.UserEntity;
 import chat.system.chat.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,6 @@ public class UserService implements UserDetailsService {
 
     //---functions---
     public UserEntity addUser(UserEntity user) {
-        user.setCode(UUID.randomUUID().toString());
         return userRepository.save(user);
     }
 
@@ -62,11 +61,10 @@ public class UserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(entity.getEmail(), entity.getPassword(), authorities);
     }
     @Transactional
-    public RegisterDTO register(RegisterDTO dto) {
+    public UserDTO register(UserDTO dto) {
         UserEntity userEntity = new UserEntity();
         userEntity.setEmail(dto.getEmail());
         userEntity.setPassword(passwordEncoder.encode(dto.getPassword()));
-        userEntity.setUsername(dto.getUsername());
         userEntity.setBirthDate(dto.getBirthdate());
         userEntity.setName(dto.getName());
         userEntity.setPhone(dto.getPhone());

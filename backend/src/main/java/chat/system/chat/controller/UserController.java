@@ -1,14 +1,14 @@
 package chat.system.chat.controller;
 
-import chat.system.chat.Dto.RegisterDTO;
+import chat.system.chat.Dto.UserDTO;
 import chat.system.chat.model.UserEntity;
 import chat.system.chat.service.UserService;
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -50,8 +50,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterDTO dto){
+    public ResponseEntity<?> register(@RequestBody UserDTO dto){
         try{
+            System.out.println("Ide eljött");
             return ResponseEntity.ok(userService.register(dto));
         }catch (Exception ex){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());

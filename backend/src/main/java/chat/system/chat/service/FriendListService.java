@@ -20,17 +20,17 @@ public class FriendListService {
         return friendListRepository.save(addFriend);
     }
 
-    public List<FriendListEntity> getFriends(Integer id) {
-        List<FriendListEntity> friendListEntities = new ArrayList<FriendListEntity>();
+    public List<Integer> getFriends(Integer id) {
+        List<Integer> friendIds = new ArrayList<Integer>();
         FriendListEntity friend = friendListRepository.findByFirstUser(id);
         if(friend != null){
-            friendListEntities.add(friendListRepository.findByFirstUser(id));
+            friendIds.add(friendListRepository.findByFirstUser(id).getSecondUser());
         }
         friend = friendListRepository.findBySecondUser(id);
         if(friend != null){
-            friendListEntities.add(friendListRepository.findBySecondUser(id));
+            friendIds.add(friendListRepository.findBySecondUser(id).getFirstUser());
         }
-        return friendListEntities;
+        return friendIds;
     }
 
     public List<Integer> getRooms(Integer id) {

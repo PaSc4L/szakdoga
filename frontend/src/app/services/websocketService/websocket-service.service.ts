@@ -51,23 +51,19 @@ export class WebsocketServiceService {
   sendMessage(message: any){
     let sender:User ={
       id: 0,
-      username: "",
       name: "Józsi",
       email: "",
       password: "",
-      code: "",
       phone: "",
-      birthDate: new Date()
+      birthdate: ""
     }
     let reciever:User ={
       id: 0,
-      username: "",
       name: "Józsi",
       email: "",
       password: "",
-      code: "",
       phone: "",
-      birthDate: new Date()
+      birthdate: ""
     }
     this.stompClient.send('/app/private-message' , {}, JSON.stringify(this.createMessageEntry(sender,reciever,message)));
   }
@@ -75,23 +71,19 @@ export class WebsocketServiceService {
   sendPublicMessage(message:any){
     let sender:User ={
       id: 0,
-      username: "",
       name: "Józsi",
       email: "",
       password: "",
-      code: "",
       phone: "",
-      birthDate: new Date()
+      birthdate: ""
     }
     let reciever:User ={
       id: 0,
-      username: "",
       name: "Józsi",
       email: "",
       password: "",
-      code: "",
       phone: "",
-      birthDate: new Date()
+      birthdate: ""
     }
     this.stompClient.send('/app/message', {}, JSON.stringify(this.createMessageEntry(sender,reciever,message)))
   }
