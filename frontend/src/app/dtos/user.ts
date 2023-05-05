@@ -6,3 +6,8 @@ export interface User{
     phone: string;
     birthdate: string;
 }
+
+export interface Friend{
+    id: number;
+    name: string;
+}
