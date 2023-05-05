@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as SockJS from 'sockjs-client';
 import {over} from 'stompjs';
 import { environment } from 'src/environments/environment';
-import { Friend, User } from 'src/app/dtos/user';
+import { Friend, FriendList, User } from 'src/app/dtos/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserServiceService } from '../userService/user-service.service';
@@ -17,6 +17,8 @@ export class WebsocketServiceService {
 //private socket$: WebSocketSubject<any>;
 
   constructor(private http:HttpClient, private service: UserServiceService) {
+    
+    this.connect();
   }
 
   connect(){
@@ -39,13 +41,18 @@ export class WebsocketServiceService {
     });
   }
   
-  getRooms(id: number) : Observable<number[]>{
+  getRooms(id: number): Observable<number[]>{
     console.log(id);
     return this.http.get<number[]>(`${environment.url}/friends/getAllRoomId/${id}`);
   }
 
-  getFriendList(id: number): Observable<Friend[]>{
+  getFriendList(id: number){
     return this.http.get<Friend[]>(`${environment.url}/friends/getFriendList/${id}`);
+  }
+
+  addFriend(addFriend: FriendList){
+    console.log(addFriend);
+    return this.http.post<FriendList>(`${environment.url}/friends/addFriend`, addFriend).subscribe();
   }
 
   sendMessage(message: any){

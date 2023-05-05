@@ -11,3 +11,9 @@ export interface Friend{
     id: number;
     name: string;
 }
+
+export interface FriendList{
+    id?: number;
+    firstUser: number;
+    secondUser: number;
+}

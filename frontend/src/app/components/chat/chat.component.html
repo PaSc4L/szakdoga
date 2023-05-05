@@ -1,14 +1,25 @@
 <div class="container">
+    <div class="chat-top">
+        <input type="text" id = "add" class="addUser" placeholder="Write your message here...">
+        <button type="button" (click)=addFriend()>Send</button>
+    </div>
     <div class="chat-box">
         <div class= "member-list">
             <ul>
                 <li> public chat </li>
-                <li *ngFor="let friend of friends"> egy emberke</li>
+                <li *ngFor="let friend of friends">{{friend.name}}</li>
             </ul>
         </div>
         <div class = "chat-box">
-            <textarea id="message" placeholder="Write your message here..."></textarea>
-            <button type="button" (click)=sendMessage()>Send</button>
+            <div class="user-chat">
+                <div>
+                    <h2>User name</h2>
+                </div>
+            </div>
+            <div>
+                <input type="text" id = "message" class="write-message" placeholder="Write your message here...">
+                <button type="button" (click)=sendMessage()>Send</button>
+            </div>
         </div>
     </div>
 </div>

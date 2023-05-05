@@ -25,13 +25,18 @@ public class FriendListService {
 
     public List<FriendListDTO> getFriends(Integer id) {
         List<Integer> friendIds = new ArrayList<Integer>();
-        FriendListEntity friend = friendListRepository.findByFirstUser(id);
-        if(friend != null){
-            friendIds.add(friendListRepository.findByFirstUser(id).getSecondUser());
+        List<FriendListEntity> friends = friendListRepository.findFriendListsByFirstUser(id);
+        for(FriendListEntity friend : friends){
+            if(friend != null){
+                friendIds.add(friend.getSecondUser());
+            }
         }
-        friend = friendListRepository.findBySecondUser(id);
-        if(friend != null){
-            friendIds.add(friendListRepository.findBySecondUser(id).getFirstUser());
+
+        friends = friendListRepository.findFriendListsBySecondUser(id);
+        for(FriendListEntity friend : friends){
+            if(friend != null){
+                friendIds.add(friend.getFirstUser());
+            }
         }
 
         List<FriendListDTO> dtos = new ArrayList<>();
@@ -53,13 +58,18 @@ public class FriendListService {
 
     public List<Integer> getRooms(Integer id) {
         List<Integer> roomNumbers = new ArrayList<Integer>();
-        FriendListEntity friend = friendListRepository.findByFirstUser(id);
-        if(friend != null){
-            roomNumbers.add(friendListRepository.findByFirstUser(id).getId());
+        List<FriendListEntity> friends = friendListRepository.findFriendListsByFirstUser(id);
+        for(FriendListEntity friend : friends){
+            if(friend != null){
+                roomNumbers.add(friend.getId());
+            }
         }
-        friend = friendListRepository.findBySecondUser(id);
-        if(friend != null){
-            roomNumbers.add(friendListRepository.findBySecondUser(id).getId());
+        
+        friends = friendListRepository.findFriendListsBySecondUser(id);
+        for(FriendListEntity friend : friends){
+            if(friend != null){
+                roomNumbers.add(friend.getId());
+            }
         }
         return roomNumbers;
     }
