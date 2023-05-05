@@ -5,6 +5,15 @@
     background-position: center;
     background-size: cover;
     position:relative;
+    padding-top: 10px;
+}
+.chat-top{
+    width:70%;
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 5px;
+    margin:0 auto;
+    padding:20px;
+    margin-bottom: 10px;
 }
 .chat-box{
     width:70%;
@@ -13,8 +22,11 @@
 }
 .chat-box ul{
     list-style-type:  none;
+}
+.chat-box li{
     padding:20px;
 }
 .member-list{
     background-color: #fff;
+    border-radius: 5px;
 }
