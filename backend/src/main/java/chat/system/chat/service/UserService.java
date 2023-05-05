@@ -50,7 +50,10 @@ public class UserService implements UserDetailsService {
         }
         return userRepository.findUserByEmail(email);
     }
-
+    public UserEntity findById(Integer id){
+        UserEntity entity = userRepository.getById(id);
+        return entity;
+    }
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserEntity entity = userRepository.findUserByEmail(email);

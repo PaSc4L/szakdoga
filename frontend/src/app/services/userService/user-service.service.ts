@@ -13,6 +13,9 @@ import { User } from 'src/app/dtos/user';
 
 export class UserServiceService {
 
+  
+  id: number = 0;
+
   constructor(private http: HttpClient) { }
 
   public login(email:string, password:string){
@@ -28,8 +31,11 @@ export class UserServiceService {
   }
 
   public async register(register:User){
-    console.log(register);
     return this.http.post<User>(`${environment.url}/user/register`, register).subscribe();
+  }
+
+  public getUserByEmail(email:string): Observable<number>{
+    return this.http.get<number>(`${environment.url}/user/find/${email}`);
   }
 
   //getAllusers

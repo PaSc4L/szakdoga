@@ -19,7 +19,6 @@ export class AuthenticationInterceptorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
     const token = sessionStorage.getItem("token") || '{}';
-    console.log("Csak most legyél itt!");
     const isLoginUrl = request.url.endsWith(environment.url + "/user/login");
     const isRegisterUrl = request.url.endsWith(environment.url + "/user/register");
     if (!isLoginUrl && !isRegisterUrl){

@@ -1,11 +1,14 @@
-<div class="chat-box">
-    <div class= "member-list">
-        <ul>
-            <li *ngFor="let friend of friends"> egy emberke</li>
-        </ul>
-    </div>
-    <div class = "chat-box">
-        <textarea id="message" placeholder="Write your message here..."></textarea>
-        <button type="button" (click)=sendMessage()>Send</button>
+<div class="container">
+    <div class="chat-box">
+        <div class= "member-list">
+            <ul>
+                <li> public chat </li>
+                <li *ngFor="let friend of friends"> egy emberke</li>
+            </ul>
+        </div>
+        <div class = "chat-box">
+            <textarea id="message" placeholder="Write your message here..."></textarea>
+            <button type="button" (click)=sendMessage()>Send</button>
+        </div>
     </div>
 </div>

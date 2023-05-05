@@ -1,5 +1,6 @@
 package chat.system.chat.controller;
 
+import chat.system.chat.Dto.FriendListDTO;
 import chat.system.chat.model.FriendListEntity;
 import chat.system.chat.repository.FriendListRepository;
 import chat.system.chat.service.FriendListService;
@@ -29,8 +30,8 @@ public class FriendListController {
     }
 
     @GetMapping("/getFriendList/{id}")
-    public ResponseEntity<List<Integer>> getAllFriends(@PathVariable Integer id){
-        List<Integer> friendIds = new ArrayList<Integer>();
+    public ResponseEntity<List<FriendListDTO>> getAllFriends(@PathVariable Integer id){
+        List<FriendListDTO> friendIds = friendListService.getFriends(id);
         return new ResponseEntity<>(friendIds, HttpStatus.OK);
     }
 
