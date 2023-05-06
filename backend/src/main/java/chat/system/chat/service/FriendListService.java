@@ -64,7 +64,7 @@ public class FriendListService {
                 roomNumbers.add(friend.getId());
             }
         }
-        
+
         friends = friendListRepository.findFriendListsBySecondUser(id);
         for(FriendListEntity friend : friends){
             if(friend != null){

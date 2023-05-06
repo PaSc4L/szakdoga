@@ -15,9 +15,17 @@
     padding:20px;
     margin-bottom: 10px;
 }
+.sendInvitation{
+    background-color: rgba(4, 15, 22, 0.2);
+}
+.logout{
+    float: right;
+    padding:5px;
+}
 .chat-box{
     width:70%;
     display: flex;
+    gap:10px;
     margin:0 auto;
 }
 .chat-box ul{
@@ -27,6 +35,23 @@
     padding:20px;
 }
 .member-list{
+    width:24%;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 7px;
+    height: 475px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-break: break-all;
+}
+.chat{
+    width: 76%;
+    flex-wrap: wrap;
+}
+.chat-header{
+    background-color: rgba(1, 186, 239);
+    padding:20px;
+    border-radius: 7px 7px 0px 0px;
+}
+.chat-header h2{
+    margin-bottom: 0;
 }

@@ -98,9 +98,10 @@ export class WebsocketServiceService {
   createMessageEntry(sender:User, reciever: User, message:string){
     return{
       senderId: sender?.id,
-      recieverId: sender?.id,
+      recieverId: reciever?.id,
+      roomId: 20,
       sender: sender?.name,
-      reciever: sender?.name,
+      reciever: reciever?.name,
       content: message
     }
   }

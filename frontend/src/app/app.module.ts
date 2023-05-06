@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule, routingRoutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationInterceptorProvider } from './interceptors/authentication-interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AuthenticationInterceptorProvider } from './interceptors/authentication
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthenticationInterceptorProvider],
   bootstrap: [AppComponent]

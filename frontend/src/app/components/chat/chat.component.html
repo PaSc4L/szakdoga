@@ -1,7 +1,8 @@
 <div class="container">
     <div class="chat-top">
         <input type="text" id = "add" class="addUser" placeholder="Write your message here...">
-        <button type="button" (click)=addFriend()>Send</button>
+        <button type="button" class="sendInvitation" (click)=addFriend()>Send</button>
+        <button type="button" class="logout" (click)=logout()>exit</button>
     </div>
     <div class="chat-box">
         <div class= "member-list">
@@ -10,9 +11,9 @@
                 <li *ngFor="let friend of friends">{{friend.name}}</li>
             </ul>
         </div>
-        <div class = "chat-box">
+        <div class = "chat">
             <div class="user-chat">
-                <div>
+                <div class="chat-header">
                     <h2>User name</h2>
                 </div>
             </div>
