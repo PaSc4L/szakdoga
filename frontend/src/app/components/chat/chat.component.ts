@@ -20,7 +20,6 @@ export class ChatComponent implements OnInit {
   sendMessage() {
     let message = (<HTMLInputElement>document.getElementById("message")).value;
     this.websocketService.sendMessage(message);
-    
     console.log(this.friends);
   }
   addFriend() {
@@ -49,6 +48,16 @@ export class ChatComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  selectChat(name:string){
+    let isHidden = document.getElementById("chat-window");
+    
+    let header = <HTMLInputElement>document.getElementById("chat-header-data");
+    if(header !=null && isHidden != null){
+      isHidden.hidden = false;
+      header.innerHTML = name;
+    }
+  }
+
    ngOnInit(): void {
     const id = sessionStorage.getItem("id") || '{}';
       this.websocketService.getFriendList(Number(id)).subscribe((next) =>{
@@ -58,5 +67,11 @@ export class ChatComponent implements OnInit {
       }
     });
     
+    
+    let chatHeader = (<HTMLInputElement>document.getElementById("chat-header-data")).value;
+  }
+
+  switchChannel(){
+
   }
 }

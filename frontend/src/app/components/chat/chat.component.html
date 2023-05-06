@@ -1,25 +1,24 @@
 <div class="container">
     <div class="chat-top">
         <input type="text" id = "add" class="addUser" placeholder="Write your message here...">
-        <button type="button" class="sendInvitation" (click)=addFriend()>Send</button>
+        <button type="button" class="sendInvitation" (click)=addFriend()><i class="fa-solid fa-envelope"></i></button>
         <button type="button" class="logout" (click)=logout()>exit</button>
     </div>
     <div class="chat-box">
         <div class= "member-list">
-            <ul>
-                <li> public chat </li>
-                <li *ngFor="let friend of friends">{{friend.name}}</li>
-            </ul>
+            <div *ngFor="let friend of friends">
+                <div class="member" (click)="selectChat(friend.name)">{{friend.name}}</div>
+            </div>
         </div>
-        <div class = "chat">
+        <div class = "chat" hidden id="chat-window">
             <div class="user-chat">
                 <div class="chat-header">
-                    <h2>User name</h2>
+                    <h2 id="chat-header-data">User name</h2>
                 </div>
             </div>
             <div>
                 <input type="text" id = "message" class="write-message" placeholder="Write your message here...">
-                <button type="button" (click)=sendMessage()>Send</button>
+                <button type="button" class="sendMessage" (click)=sendMessage()>Send</button>
             </div>
         </div>
     </div>

@@ -15,12 +15,21 @@
     padding:20px;
     margin-bottom: 10px;
 }
+.addUser{
+    padding:5px;
+    border-radius: 7px 0px 0px 7px;
+}
 .sendInvitation{
-    background-color: rgba(4, 15, 22, 0.2);
+    background-color: none;
+    padding:5px;
+    background-color: rgba(1, 186, 239);
+    border-radius: 0px 7px 7px 0px;
 }
 .logout{
     float: right;
     padding:5px;
+    color:#fff;
+    background-color: red;
 }
 .chat-box{
     width:70%;
@@ -28,30 +37,40 @@
     gap:10px;
     margin:0 auto;
 }
-.chat-box ul{
-    list-style-type:  none;
-}
-.chat-box li{
-    padding:20px;
-}
 .member-list{
     width:24%;
-    background-color: #fff;
+    background-color: rgba(4, 15, 22, 0.4);
+    color: #fff;
     border-radius: 7px;
     height: 475px;
     overflow-y: auto;
     overflow-x: hidden;
     word-break: break-all;
 }
+.member{
+    background-color: rgba(4, 15, 22, 0.6);
+    padding:20px;
+}
+.member:hover{
+    background-color: rgba(1, 186, 239, 0.6);
+    border-radius: 7px;
+}
 .chat{
     width: 76%;
     flex-wrap: wrap;
 }
 .chat-header{
-    background-color: rgba(1, 186, 239);
+    background-color: rgba(1, 186, 239, 0.8);
     padding:20px;
     border-radius: 7px 7px 0px 0px;
 }
 .chat-header h2{
     margin-bottom: 0;
+}
+
+.write-message{
+    width:90%;
+}
+.sendMessage{
+    width:10%;
 }
