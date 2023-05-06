@@ -1,5 +1,6 @@
 package chat.system.chat.controller;
 
+import chat.system.chat.Dto.ChatMessageDTO;
 import chat.system.chat.model.ChatMessageEntity;
 import chat.system.chat.model.FriendListEntity;
 import chat.system.chat.service.ChatMessageService;
@@ -22,14 +23,14 @@ public class ChatController {
     //get message from public chat and send message to public chat
     @MessageMapping("/message")
     @SendTo("/topic/public")
-    public ChatMessageEntity sendMessage(@Payload ChatMessageEntity chatMessage) {
+    public ChatMessageDTO sendMessage(@Payload ChatMessageDTO chatMessage) {
 
         return chatMessage;
     }
 
     //get and send message from private chat
     @MessageMapping("/private-message")
-    public ChatMessageEntity sendPrivateMessage(@Payload ChatMessageEntity chatMessage){
+    public ChatMessageDTO sendPrivateMessage(@Payload ChatMessageDTO chatMessage){
         chatMessageService.saveMessage(chatMessage);
         simpMessagingTemplate.convertAndSendToUser(chatMessage.getRoomId(),"/private", chatMessage );
 
