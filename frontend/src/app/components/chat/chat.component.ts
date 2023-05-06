@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Friend, FriendList } from 'src/app/dtos/user';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 import { WebsocketServiceService } from 'src/app/services/websocketService/websocket-service.service';
@@ -14,11 +15,11 @@ export class ChatComponent implements OnInit {
   friends: Friend[] = [];
   readData: any;
 
-  constructor(private websocketService: WebsocketServiceService, private service: UserServiceService) {}
+  constructor(private websocketService: WebsocketServiceService, private service: UserServiceService, private router: Router) {}
 
   sendMessage() {
     let message = (<HTMLInputElement>document.getElementById("message")).value;
-    this.websocketService.sendPublicMessage(message);
+    this.websocketService.sendMessage(message);
     
     console.log(this.friends);
   }
@@ -40,6 +41,12 @@ export class ChatComponent implements OnInit {
 
     this.websocketService.addFriend(friend);
     });
+  }
+
+  logout(){
+    sessionStorage.removeItem("id");
+    sessionStorage.removeItem("token");
+    this.router.navigate(['/']);
   }
 
    ngOnInit(): void {

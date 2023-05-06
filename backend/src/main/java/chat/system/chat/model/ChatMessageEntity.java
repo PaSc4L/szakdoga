@@ -1,14 +1,24 @@
 package chat.system.chat.model;
 
-import java.awt.*;
+import javax.persistence.*;
 
-public class ChatMessage {
-    //private MessageStatus messageType;
+@Table(name="chat_message")
+@Entity
+public class ChatMessageEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO )
+    private Integer Id;
+    @Column()
     private String senderId;
+    @Column()
     private String recieverId;
+    @Column()
     private String roomId;
+    @Column()
     private String sender;
+    @Column()
     private String reciver;
+    @Column()
     private String content;
 
     public String getRecieverId() {
@@ -42,14 +52,6 @@ public class ChatMessage {
     public void setReciver(String reciver) {
         this.reciver = reciver;
     }
-
-    /*public MessageStatus getMessageType() {
-        return messageType;
-    }
-
-    public void setMessageType(MessageStatus messageType) {
-        this.messageType = messageType;
-    }*/
 
     public String getSender() {
         return sender;

@@ -17,3 +17,13 @@ export interface FriendList{
     firstUser: number;
     secondUser: number;
 }
+
+export interface ChatMessage{
+    id: number;
+    senderId: number;
+    receiverId: number;
+    roomId: string;
+    sender: string;
+    receiver: string;
+    content: string;
+}
