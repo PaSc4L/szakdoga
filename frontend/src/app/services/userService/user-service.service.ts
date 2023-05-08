@@ -38,6 +38,10 @@ export class UserServiceService {
     return this.http.get<number>(`${environment.url}/user/find/${email}`);
   }
 
+  public getUserNameById(id:number){
+    return this.http.get(`${environment.url}/user/name/${id}`, {responseType: 'text'});
+  }
+
   //getAllusers
   public getUsers(): Observable<User[]>{
     return this.http.get<User[]>(`${environment.url}/user/all`);

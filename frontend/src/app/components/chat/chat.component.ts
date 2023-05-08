@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Friend, FriendList } from 'src/app/dtos/user';
+import { ChatMessage, Friend, FriendList } from 'src/app/dtos/user';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 import { WebsocketServiceService } from 'src/app/services/websocketService/websocket-service.service';
+
 
 @Component({
   selector: 'app-chat',
@@ -13,14 +14,36 @@ export class ChatComponent implements OnInit {
   
   
   friends: Friend[] = [];
+  messages: ChatMessage[] = [];
   readData: any;
+  myName: string= "";
 
+  choosenFriend: Friend = {
+    name:"",
+    id: 0,
+    roomId: 0
+  };
   constructor(private websocketService: WebsocketServiceService, private service: UserServiceService, private router: Router) {}
 
   sendMessage() {
     let message = (<HTMLInputElement>document.getElementById("message")).value;
-    this.websocketService.sendMessage(message);
-    console.log(this.friends);
+    let myId = sessionStorage.getItem("id");
+
+    const MessageDTO:ChatMessage ={
+      senderId: Number(myId),
+      recieverId: this.choosenFriend.id,
+      roomId: this.choosenFriend.roomId,
+      sender: this.myName,
+      reciever: this.choosenFriend.name,
+      content: message
+      }
+    this.websocketService.sendMessage(MessageDTO);
+    this.websocketService.saveMessage(MessageDTO);
+    //console.log(this.friends);
+    
+    console.log(message);
+    //if(messa)
+    //messageDisplay?.innerHTML="";
   }
   addFriend() {
     let email = (<HTMLInputElement>document.getElementById("add")).value;
@@ -48,30 +71,101 @@ export class ChatComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  selectChat(name:string){
+  selectChat(friend:Friend){
     let isHidden = document.getElementById("chat-window");
     
     let header = <HTMLInputElement>document.getElementById("chat-header-data");
     if(header !=null && isHidden != null){
       isHidden.hidden = false;
-      header.innerHTML = name;
+      header.innerHTML = friend.name;
+
+      this.choosenFriend.name=friend.name;
+      this.choosenFriend.id=friend.id;
+      this.choosenFriend.roomId=friend.roomId;
+      
+      this.websocketService.setRoomId(friend.roomId);
     }
+    this.websocketService.getAllMessage(this.choosenFriend.roomId).subscribe((next)=>{
+      
+      let messageDisplay = document.getElementById("message-display");
+      if(messageDisplay != null){
+        messageDisplay.innerHTML = "";
+      }
+      for(let i = 0; i < next.length; i++){
+        this.messages[i]= next[i];
+          if(this.messages[i] != null && messageDisplay != null){
+            let dialog ="";
+            let myId = sessionStorage.getItem("id");
+            if(this.messages[i].senderId == Number(myId)){
+              
+            dialog = `<div class="sent-dialog" style="display: flex;
+            width: 100%;
+            justify-content: end;
+            margin-bottom: 10px;">
+              <div class="sent-dialog-style" style="display: flex;
+              flex-direction: column;
+              max-width: 300px;
+              background-color: rgba(4, 15, 22, 0.8);
+              color:white;
+              padding: 10px;
+              text-align: right;
+              border-radius: 7px;
+              margin-top:5px;
+              margin-right:2px;
+              word-break: break-all;">
+                <div>${this.messages[i]?.content}</div>
+              </div>
+            </div>`
+            }
+            else{
+              dialog = `<div class="recieved-dialog" stlye="style= "display: flex;
+              width: 100%;
+              justify-content: start;
+              margin-bottom: 10px;">
+                <div class="recieved-dialog-style" style="display: flex;
+                flex-direction: column;
+                max-width: 300px;
+                align-items: start;
+                background-color: rgba(1, 186, 239);
+                padding: 10px;
+                text-align: left;
+                border-radius: 7px;
+                margin-top:5px;
+                margin-left:2px;
+                word-break: break-all;">
+                  <div>${this.messages[i]?.content}</div>
+                </div>
+            </div>`
+            }
+            //const parentNode = document.createElement("div");
+            //parentNode.classList.add("message-item-parent-me");
+            
+            messageDisplay.innerHTML += dialog;
+
+            messageDisplay.scrollTop = messageDisplay.scrollHeight;
+          }
+      }
+    })
+    
   }
 
    ngOnInit(): void {
     const id = sessionStorage.getItem("id") || '{}';
-      this.websocketService.getFriendList(Number(id)).subscribe((next) =>{
+    
+    this.service.getUserNameById(Number(id)).subscribe((next)=>{
+      
+      this.myName = next;
+      console.log(this.myName);
+    })
+    this.websocketService.getFriendList(Number(id)).subscribe((next) =>{
       for(let i = 0; i < next.length; i++){
         this.friends[i] = next[i];
-        console.log(this.friends[i]);
       }
     });
-    
-    
-    let chatHeader = (<HTMLInputElement>document.getElementById("chat-header-data")).value;
-  }
-
-  switchChannel(){
-
+    this.websocketService.getRooms(Number(id)).subscribe(
+      (res) =>{
+        console.log(res);
+        this.websocketService.ids = res;
+      });
   }
 }

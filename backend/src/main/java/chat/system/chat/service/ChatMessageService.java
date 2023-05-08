@@ -7,22 +7,30 @@ import chat.system.chat.repository.FriendListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ChatMessageService {
 
     @Autowired
     private ChatMessageRepository chatMessageRepository;
 
-    public ChatMessageDTO saveMessage(ChatMessageDTO message){
+    public ChatMessageEntity saveMessage(ChatMessageDTO message){
+        System.out.println(message.getContent());
         ChatMessageEntity chatMessageEntity = new ChatMessageEntity();
         chatMessageEntity.setSenderId(message.getSenderId());
         chatMessageEntity.setRecieverId(message.getRecieverId());
         chatMessageEntity.setRoomId(message.getRoomId());
         chatMessageEntity.setSender(message.getSender());
-        chatMessageEntity.setReciver(message.getReciver());
+        chatMessageEntity.setReciever(message.getReciever());
         chatMessageEntity.setContent(message.getContent());
-        chatMessageRepository.save(chatMessageEntity)
-        return message;
+        chatMessageRepository.save(chatMessageEntity);
+        return chatMessageEntity;
+    }
+
+    public List<ChatMessageEntity> getAllMessages(Integer id){
+        List<ChatMessageEntity> getRoomMessages = chatMessageRepository.findAllChatMessagesByRoomId(id);
+        return getRoomMessages;
     }
 
 }

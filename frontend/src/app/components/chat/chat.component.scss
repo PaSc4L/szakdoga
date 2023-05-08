@@ -17,7 +17,7 @@
 }
 .addUser{
     padding:5px;
-    border-radius: 7px 0px 0px 7px;
+    border-radius: 7px 0px 0px 7pcx;
 }
 .sendInvitation{
     background-color: none;
@@ -67,9 +67,21 @@
 .chat-header h2{
     margin-bottom: 0;
 }
-
+.message-display{
+    width:100%;
+    background-color: #fff;
+    height:350px;
+    overflow-y: auto;
+}
+.message-bottom{
+    background-color:rgba(4, 15, 22, 0.6);
+    border-radius: 0px 0px 7px 7px;
+    width:100%;
+}
 .write-message{
     width:90%;
+    height:40px;
+    border-radius: 0px 0px 0px 7px;
 }
 .sendMessage{
     width:10%;

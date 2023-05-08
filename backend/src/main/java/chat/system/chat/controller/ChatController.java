@@ -18,7 +18,6 @@ public class ChatController {
     private SimpMessagingTemplate simpMessagingTemplate;
 
     private FriendListEntity friendListEntity;
-    private ChatMessageService chatMessageService;
 
     //get message from public chat and send message to public chat
     @MessageMapping("/message")
@@ -31,8 +30,7 @@ public class ChatController {
     //get and send message from private chat
     @MessageMapping("/private-message")
     public ChatMessageDTO sendPrivateMessage(@Payload ChatMessageDTO chatMessage){
-        chatMessageService.saveMessage(chatMessage);
-        simpMessagingTemplate.convertAndSendToUser(chatMessage.getRoomId(),"/private", chatMessage );
+        simpMessagingTemplate.convertAndSendToUser(chatMessage.getRoomId().toString(),"/private", chatMessage );
 
         return chatMessage;
     }

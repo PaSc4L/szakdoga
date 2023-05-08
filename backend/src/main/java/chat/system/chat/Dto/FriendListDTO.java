@@ -5,6 +5,15 @@ public class FriendListDTO {
 
     private String name;
     private Integer id;
+    private Integer roomId;
+
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
 
     public String getName() {
         return name;

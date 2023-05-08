@@ -9,48 +9,48 @@ public class ChatMessageEntity {
     @GeneratedValue(strategy = GenerationType.AUTO )
     private Integer Id;
     @Column()
-    private String senderId;
+    private Integer senderId;
     @Column()
-    private String recieverId;
+    private Integer recieverId;
     @Column()
-    private String roomId;
+    private Integer roomId;
     @Column()
     private String sender;
     @Column()
-    private String reciver;
+    private String reciever;
     @Column()
     private String content;
 
-    public String getRecieverId() {
+    public Integer getRecieverId() {
         return recieverId;
     }
 
-    public void setRecieverId(String recieverId) {
+    public void setRecieverId(Integer recieverId) {
         this.recieverId = recieverId;
     }
 
-    public String getSenderId() {
+    public Integer getSenderId() {
         return senderId;
     }
 
-    public void setSenderId(String id) {
+    public void setSenderId(Integer id) {
         this.senderId = id;
     }
 
-    public String getRoomId() {
+    public Integer getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(String roomId) {
+    public void setRoomId(Integer roomId) {
         this.roomId = roomId;
     }
 
-    public String getReciver() {
-        return reciver;
+    public String getReciever() {
+        return reciever;
     }
 
-    public void setReciver(String reciver) {
-        this.reciver = reciver;
+    public void setReciever(String reciever) {
+        this.reciever = reciever;
     }
 
     public String getSender() {
