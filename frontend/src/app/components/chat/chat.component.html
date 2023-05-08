@@ -7,7 +7,7 @@
     <div class="chat-box">
         <div class= "member-list">
             <div *ngFor="let friend of friends">
-                <div class="member" (click)="selectChat(friend.name)">{{friend.name}}</div>
+                <div class="member" (click)="selectChat(friend)">{{friend.name}}</div>
             </div>
         </div>
         <div class = "chat" hidden id="chat-window">
@@ -17,8 +17,11 @@
                 </div>
             </div>
             <div>
-                <input type="text" id = "message" class="write-message" placeholder="Write your message here...">
-                <button type="button" class="sendMessage" (click)=sendMessage()>Send</button>
+                <div class="message-display" id ="message-display"></div>
+                <div class="message-bottom">
+                    <input type="text" id = "message" class="write-message" placeholder="Write your message here...">
+                    <button type="button" class="sendMessage" (click)=sendMessage()><i class="fa-solid fa-paper-plane-top" style="color: #01baef;"></i></button>
+                </div>
             </div>
         </div>
     </div>

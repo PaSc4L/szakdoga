@@ -2,47 +2,35 @@ package chat.system.chat.Dto;
 
 public class ChatMessageDTO {
 
-    private String senderId;
-    private String recieverId;
-    private String roomId;
+    private Integer senderId;
+    private Integer recieverId;
+    private Integer roomId;
     private String sender;
-    private String reciver;
+    private String reciever;
     private String content;
 
 
-    public ChatMessageDTO() {
-    }
-
-    public ChatMessageDTO(String senderId, String recieverId, String roomId, String sender, String reciver, String content) {
-        this.senderId = senderId;
-        this.recieverId = recieverId;
-        this.roomId = roomId;
-        this.sender = sender;
-        this.reciver = reciver;
-        this.content = content;
-    }
-
-    public String getSenderId() {
+    public Integer getSenderId() {
         return senderId;
     }
 
-    public void setSenderId(String senderId) {
+    public void setSenderId(Integer senderId) {
         this.senderId = senderId;
     }
 
-    public String getRecieverId() {
+    public Integer getRecieverId() {
         return recieverId;
     }
 
-    public void setRecieverId(String recieverId) {
+    public void setRecieverId(Integer recieverId) {
         this.recieverId = recieverId;
     }
 
-    public String getRoomId() {
+    public Integer getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(String roomId) {
+    public void setRoomId(Integer roomId) {
         this.roomId = roomId;
     }
 
@@ -54,12 +42,12 @@ public class ChatMessageDTO {
         this.sender = sender;
     }
 
-    public String getReciver() {
-        return reciver;
+    public String getReciever() {
+        return reciever;
     }
 
-    public void setReciver(String reciver) {
-        this.reciver = reciver;
+    public void setReciver(String reciever) {
+        this.reciever = reciever;
     }
 
     public String getContent() {

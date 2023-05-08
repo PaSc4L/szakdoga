@@ -10,6 +10,7 @@ export interface User{
 export interface Friend{
     id: number;
     name: string;
+    roomId: number;
 }
 
 export interface FriendList{
@@ -19,11 +20,10 @@ export interface FriendList{
 }
 
 export interface ChatMessage{
-    id: number;
     senderId: number;
-    receiverId: number;
-    roomId: string;
+    recieverId: number;
+    roomId: number;
     sender: string;
-    receiver: string;
+    reciever: string;
     content: string;
 }

@@ -14,8 +14,6 @@ export class RegisterComponent implements OnInit {
   constructor(private service: UserServiceService, private router: Router) { }
 
   ngOnInit(): void {
-    //let currentTime = new Date();
-    //(<HTMLInputElement>document.getElementById(currentTime)).value;
     
   }
 

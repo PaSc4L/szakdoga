@@ -29,11 +29,6 @@ export class LoginComponent implements OnInit {
         this.service.getUserByEmail(email).subscribe(
           (next)=>{
             sessionStorage.setItem("id", ""+next);
-            this.websocketService.getRooms(next).subscribe(
-              (res) =>{
-                this.websocketService.ids = res;
-              });
-            this.websocketService.connect();
             this.router.navigate(['/chat']);
           });
       }

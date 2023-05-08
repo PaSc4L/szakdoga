@@ -13,4 +13,8 @@ public interface FriendListRepository extends JpaRepository<FriendListEntity, In
     List<FriendListEntity> findFriendListsByFirstUser(Integer id);
 
     List<FriendListEntity> findFriendListsBySecondUser(Integer id);
+
+    FriendListEntity getByFirstUserAndSecondUser(Integer firstUser, Integer secondUser);
+
+    FriendListEntity getBySecondUserAndFirstUser(Integer firstUser, Integer secondUser);
 }

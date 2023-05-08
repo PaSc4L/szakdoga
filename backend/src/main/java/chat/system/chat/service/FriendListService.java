@@ -42,15 +42,16 @@ public class FriendListService {
         List<FriendListDTO> dtos = new ArrayList<>();
 
         for (Integer az: friendIds) {
-            dtos.add(idToDTO(az));
+            dtos.add(idToDTO(id, az));
         }
         return dtos;
     }
 
-    private FriendListDTO idToDTO(Integer id){
-        UserEntity user = userService.findById(id);
+    private FriendListDTO idToDTO(Integer firstId, Integer secondId){
+        UserEntity user = userService.findById(secondId);
         FriendListDTO dto = new FriendListDTO();
-        dto.setId(id);
+        dto.setId(secondId);
+        dto.setRoomId(getFriendRoom(firstId,secondId));
         dto.setName(user.getName());
 
         return dto;
@@ -72,5 +73,16 @@ public class FriendListService {
             }
         }
         return roomNumbers;
+    }
+
+    public Integer getFriendRoom(Integer firstId, Integer secondId){
+        FriendListEntity roomId = friendListRepository.getByFirstUserAndSecondUser(firstId,secondId);
+        if(roomId == null){
+            roomId = friendListRepository.getBySecondUserAndFirstUser(firstId,secondId);
+            return roomId.getId();
+        }
+        else{
+            return roomId.getId();
+        }
     }
 }
