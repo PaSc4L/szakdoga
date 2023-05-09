@@ -40,8 +40,7 @@ export class ChatComponent implements OnInit {
     this.websocketService.sendMessage(MessageDTO);
     this.websocketService.saveMessage(MessageDTO);
     //console.log(this.friends);
-    
-    console.log(message);
+    (<HTMLInputElement>document.getElementById("message")).value= "";
     //if(messa)
     //messageDisplay?.innerHTML="";
   }

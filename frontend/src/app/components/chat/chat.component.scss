@@ -17,7 +17,7 @@
 }
 .addUser{
     padding:5px;
-    border-radius: 7px 0px 0px 7pcx;
+    border-radius: 7px 0px 0px 7px;
 }
 .sendInvitation{
     background-color: none;
@@ -85,4 +85,7 @@
 }
 .sendMessage{
     width:10%;
+    height: max;
+    background-color: rgba(1, 186, 239, 0.8);
+    color: #fff;
 }
