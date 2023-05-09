@@ -1,6 +1,6 @@
 <div class="container">
     <div class="chat-top">
-        <input type="text" id = "add" class="addUser" placeholder="Write your message here...">
+        <input type="text" id = "add" class="addUser" placeholder="Write your message here..." autocomplete="off">
         <button type="button" class="sendInvitation" (click)=addFriend()><i class="fa-solid fa-envelope"></i></button>
         <button type="button" class="logout" (click)=logout()>exit</button>
     </div>
@@ -19,8 +19,8 @@
             <div>
                 <div class="message-display" id ="message-display"></div>
                 <div class="message-bottom">
-                    <input type="text" id = "message" class="write-message" placeholder="Write your message here...">
-                    <button type="button" class="sendMessage" (click)=sendMessage()><i class="fa-solid fa-paper-plane-top" style="color: #01baef;"></i></button>
+                    <input type="text" id = "message" class="write-message" placeholder="Write your message here..." autocomplete="off">
+                    <button type="button" class="sendMessage" (click)=sendMessage() >SEND</button>
                 </div>
             </div>
         </div>
